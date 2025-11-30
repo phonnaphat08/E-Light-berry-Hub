@@ -1,4 +1,4 @@
-/* style.css - Warm Earth Tone Theme (FINAL VERSION with Fine Modal) */
+/* style.css - Warm Earth Tone Theme (FINAL VERSION with Fine Modal and Responsive Design) */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -55,6 +55,20 @@ main {
     max-width: 1100px; 
     margin: 30px auto;
     padding: 0 20px;
+    /* Added display flex to handle two columns (catalog and info) on desktop */
+    display: flex;
+    gap: 30px;
+    align-items: flex-start; /* Aligns items to the top */
+}
+
+/* Specific size for catalog and info sections on desktop */
+.library-catalog {
+    flex: 3; /* Takes up more space */
+    min-width: 65%;
+}
+.booking-info {
+    flex: 1; /* Takes up less space */
+    min-width: 300px;
 }
 
 /* Landing Page Specific Style */
@@ -118,6 +132,9 @@ main {
     background-color: #FFFFFF; 
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    justify-content: center;
 }
 
 .nav-btn {
@@ -125,7 +142,7 @@ main {
     color: #8C6A57; 
     border: 1px solid #E3D9C9; 
     padding: 10px 20px;
-    margin: 0 8px;
+    margin: 5px 8px; /* Adjusted margin for wrapping */
     border-radius: 5px; 
     cursor: pointer;
     font-weight: bold;
@@ -296,7 +313,7 @@ main {
     margin: 5px 0;
 }
 
-/* START: NEW LINK STYLING FOR CONTACT INFO */
+/* NEW LINK STYLING FOR CONTACT INFO */
 .contact-info p a {
     color: #8C6A57; /* Darker brown color */
     text-decoration: none;
@@ -304,7 +321,7 @@ main {
     transition: color 0.3s;
 }
 
-/* 🟢 BINDING VISITED LINKS TO THE SAME COLOR */
+/* BINDING VISITED LINKS TO THE SAME COLOR */
 .contact-info p a:visited {
     color: #8C6A57; 
 }
@@ -313,7 +330,6 @@ main {
     color: #C39F7F; /* Lighter color on hover */
     text-decoration: underline;
 }
-/* END: NEW LINK STYLING */
 
 
 /* Style for Overdue Timer Background */
@@ -331,77 +347,93 @@ main {
     100% { transform: scale(1); }
 }
 
-/* NEW: Modal Styling for Fine Payment */
+/* Modal Styling for Fine Payment */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 100; /* Sit on top */
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
     left: 0;
     top: 0;
     width: 100%; 
     height: 100%; 
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); 
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto; /* 10% from the top and centered */
+    margin: 10% auto; 
     padding: 30px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%; 
     max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     text-align: center;
 }
 
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
+/* ... (Modal content styles remain the same) ... */
 
-.close-btn:hover,
-.close-btn:focus {
-    color: #000;
-    text-decoration: none;
-}
+/* ---------------------------------------------------------------- */
+/* 📱 MEDIA QUERY: RESPONSIVE DESIGN FOR MOBILE PHONES */
+/* ---------------------------------------------------------------- */
 
-.payment-details {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #FAF6F0; 
-    border-radius: 8px;
-}
+@media (max-width: 768px) {
+    /* Main Layout Adjustment */
+    main {
+        flex-direction: column; /* Stacks the two columns (Catalog and Info) vertically */
+        padding: 0 10px; /* Reduces side padding */
+        margin: 20px auto;
+    }
+    
+    /* Header and Title Adjustment */
+    header h1 {
+        font-size: 1.8em; /* Smaller title size */
+    }
 
-.qr-code-container {
-    margin: 15px 0;
-}
+    /* Home Button Adjustment for mobile header */
+    .home-btn {
+        position: static; /* Allows it to flow naturally */
+        transform: none;
+        margin: 0 10px 10px 10px; /* Adds space below the button */
+        padding: 6px 10px;
+        align-self: flex-start;
+    }
 
-#qrCodeImage {
-    width: 100%; 
-    max-width: 200px; /* Max size for the QR code */
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
+    /* Catalog and Info Sections */
+    .library-catalog, .booking-info {
+        min-width: 100%; /* Takes up full screen width */
+        flex: none;
+    }
+    
+    /* Navigation Bar (Buttons) Adjustment */
+    .category-nav {
+        padding: 10px 5px;
+    }
+    .nav-btn {
+        font-size: 0.8em; /* Smaller button text */
+        padding: 8px 10px;
+        margin: 5px 3px;
+        flex-grow: 1; /* Allows buttons to share space better */
+    }
 
-.qr-note {
-    font-size: 0.9em;
-    color: #8C6A57;
-    margin-top: 5px;
-}
+    /* Book Card Adjustment for Mobile View */
+    .book-list {
+        gap: 15px; /* Smaller gap between cards */
+    }
+    .book-card {
+        width: 90%; /* Makes cards wider to fill the screen better */
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    .book-card h3 {
+        min-height: auto; /* Removes minimum height constraint on small screens */
+    }
 
-.bank-details p {
-    margin: 5px 0;
-    font-size: 1em;
-}
-
-.paid-note {
-    font-size: 0.8em;
-    color: #6A6A6A;
-    margin-top: 10px;
+    /* Modal Adjustment */
+    .modal-content {
+        margin: 5% auto;
+        padding: 20px;
+        width: 90%; /* Wider modal on small screens */
+    }
 }
