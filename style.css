@@ -313,7 +313,7 @@ main {
     margin: 5px 0;
 }
 
-/* NEW LINK STYLING FOR CONTACT INFO */
+/* NEW LINK STYLING FOR CONTACT INFO (Keep color on visited links) */
 .contact-info p a {
     color: #8C6A57; /* Darker brown color */
     text-decoration: none;
@@ -321,7 +321,6 @@ main {
     transition: color 0.3s;
 }
 
-/* BINDING VISITED LINKS TO THE SAME COLOR */
 .contact-info p a:visited {
     color: #8C6A57; 
 }
@@ -338,7 +337,7 @@ main {
     color: #C62828; /* Dark Red text */
     border: 1px solid #C62828;
     font-weight: bold;
-    animation: pulse 1.5s infinite; /* Optional: Make it blink slightly */
+    animation: pulse 1.5s infinite; 
 }
 
 @keyframes pulse {
@@ -379,7 +378,7 @@ main {
 /* ---------------------------------------------------------------- */
 
 @media (max-width: 768px) {
-    /* Main Layout Adjustment */
+    /* Main Layout Adjustment (Catalog and Info Section) */
     main {
         flex-direction: column; /* Stacks the two columns (Catalog and Info) vertically */
         padding: 0 10px; /* Reduces side padding */
@@ -404,6 +403,20 @@ main {
     .library-catalog, .booking-info {
         min-width: 100%; /* Takes up full screen width */
         flex: none;
+    }
+
+    /* Landing Page Adjustment for Mobile */
+    .landing-container h1 {
+        font-size: 3em; /* ลดขนาดชื่อเว็บใหญ่ลงสำหรับมือถือ */
+        letter-spacing: 3px;
+    }
+    .landing-container p {
+        font-size: 1.2em; /* ลดขนาดข้อความต้อนรับ */
+        margin-bottom: 30px;
+    }
+    .enter-btn {
+        font-size: 1.1em; /* ลดขนาดปุ่มลงเล็กน้อย */
+        padding: 12px 30px;
     }
     
     /* Navigation Bar (Buttons) Adjustment */
