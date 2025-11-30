@@ -1,9 +1,14 @@
-/* style.css - Warm Earth Tone Theme (FINAL VERSION with Fine Modal and Responsive Design) */
+/* style.css - Warm Earth Tone Theme (FINAL VERSION with Fine Modal, Responsive Design, Background Image, and Transparent Buttons) */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #FAF6F0; /* Off-White / Very light Cream */
+    /* --- ภาพพื้นหลัง --- */
+    background-image: url('library_background.jpg'); /* ใช้ชื่อไฟล์ที่คุณตั้งไว้ */
+    background-size: cover; /* ทำให้รูปภาพคลุมเต็มพื้นที่ */
+    background-attachment: fixed; /* ทำให้รูปภาพอยู่กับที่เมื่อเลื่อนหน้าจอ */
+    /* ------------------- */
+    background-color: #FAF6F0; /* Off-White / Very light Cream (ใช้เป็น fallback) */
     color: #4A4A4A; /* Dark Brown/Grey for text */
 }
 
@@ -59,6 +64,10 @@ main {
     display: flex;
     gap: 30px;
     align-items: flex-start; /* Aligns items to the top */
+    /* เพิ่มพื้นหลังสีขาวโปร่งแสงเพื่อให้ข้อความอ่านง่ายบนภาพพื้นหลัง */
+    background-color: rgba(255, 255, 255, 0.9); /* White with 90% opacity */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Specific size for catalog and info sections on desktop */
@@ -80,6 +89,8 @@ main {
     align-items: center;
     text-align: center;
     padding: 20px;
+    /* เพิ่มพื้นหลังสีขาวโปร่งแสงสำหรับหน้า Landing Page โดยเฉพาะ */
+    background-color: rgba(255, 255, 255, 0.75); /* White with 75% opacity */
 }
 .landing-container h1 {
     font-size: 4.5em; 
@@ -222,50 +233,57 @@ main {
     border: 1px solid #C62828;
 }
 
+/* ------------------------------------------------------------- */
+/* NEW: TRANSPARENT BUTTON STYLES WITH BORDER */
+/* ------------------------------------------------------------- */
+
 /* Base style for all action buttons */
 .book-btn {
-    color: white;
-    border: none;
-    padding: 10px 15px;
+    /* Text color matches border color by default (defined by --button-color below) */
+    color: var(--button-color); 
+    border: 2px solid var(--button-color); /* Add border */
+    background-color: transparent; /* Transparent background */
+    padding: 8px 15px; /* Reduced padding for a lighter look */
     border-radius: 5px; 
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: all 0.3s; /* Transition for all properties */
     width: 100%;
     margin-top: 15px; 
 }
 
+/* Hover effect for all buttons: fill the background */
+.book-btn:hover:not(:disabled) {
+    background-color: var(--button-color); /* Fill background on hover */
+    color: white; /* Change text to white on hover */
+}
+
 /* Reserve Button Style */
 .book-btn.reserve-btn {
-    background-color: #C39F7F; 
-}
-.book-btn.reserve-btn:hover:not(:disabled) {
-    background-color: #A9876E; 
+    --button-color: #C39F7F; /* Define color variable */
 }
 
 /* Return Button Style */
 .book-btn.return-btn {
-    background-color: #6A6A6A; /* Gray/Neutral tone for return action */
-}
-.book-btn.return-btn:hover:not(:disabled) {
-    background-color: #4A4A4A; 
+    --button-color: #6A6A6A; /* Define color variable */
 }
 
 /* Fine Button Style */
 .book-btn.fine-btn {
-    background-color: #C62828; /* Deep Red for urgent action */
-    box-shadow: 0 4px 8px rgba(198, 40, 40, 0.4);
-}
-.book-btn.fine-btn:hover:not(:disabled) {
-    background-color: #8C1C1C;
+    --button-color: #C62828; /* Define color variable */
+    box-shadow: none; /* Remove old box shadow for clean transparent look */
 }
 
 .book-btn:disabled {
     background-color: #D3D3D3; 
     color: #8C8C8C;
+    border-color: #D3D3D3; /* Ensure border is also greyed out */
     cursor: not-allowed;
 }
+
+/* ------------------------------------------------------------- */
+
 
 .booking-info {
     margin-top: 40px;
