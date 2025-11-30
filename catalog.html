@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Light berry Hub - Book Catalog</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="home-btn">← Go to Home</a>
+        <h1>📚 E Light berry Hub: Book Catalog</h1>
+    </header>
+
+    <nav class="category-nav">
+        <button class="nav-btn" data-view="Reservations">My Reservations</button>
+        <button class="nav-btn active" data-view="All">All Books</button>
+        <button class="nav-btn" data-view="Fiction">Fiction & Fantasy</button>
+        <button class="nav-btn" data-view="Comics">Comics & Manga</button>
+        <button class="nav-btn" data-view="Learning">Learning & Study</button>
+    </nav>
+    <main>
+        <section class="library-catalog">
+            <h2 id="catalog-title">All Books</h2>
+            <div id="book-list-container" class="book-list">
+            </div>
+        </section>
+        
+        <section class="booking-info">
+            <h2>System Notes</h2>
+            <p>ℹ️ **Disclaimer:** This system is a prototype. All reservation statuses will reset upon page refresh.</p>
+            
+            <div class="policy-info">
+                <p>⚠️ **Loan Policy:** Books are reserved for a maximum of **7 days** (including the day of reservation).</p>
+                <p>🔔 **Overdue Fine:** Failure to return the book by the due date will result in a penalty fee of **5 THB per day** (starting from the day after the due date).</p>
+            </div>
+            <div class="contact-info">
+                <p>🚨 Need help? Contact us!</p>
+                
+                <p>
+                    Line ID (Admin 1): @phonnaphat08 | 
+                    Line ID (Admin 2): @botchina.pj
+                </p>
+                
+                <p>
+                    Instagram (Admin 1): 
+                    <a href="https://www.instagram.com/_phonnaphat.t/" target="_blank">@_phonnaphat.t</a> 
+                    | 
+                    Instagram (Admin 2): 
+                    <a href="https://www.instagram.com/dazaro.mctc/" target="_blank">@dazaro.mctc</a>
+                </p>
+            </div>
+            </section>
+    </main>
+    
+    <div id="fineModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>💰 Fine Payment: <span id="modalBookTitle"></span></h2>
+            <p>Total Overdue Fine: <strong id="modalFineAmount" style="color: #C62828;"></strong></p>
+            
+            <div class="payment-details">
+                <h3>Please Scan to Pay (PromptPay)</h3>
+                
+                <div class="qr-code-container">
+                    <img id="qrCodeImage" src="promptpay_qr.png" alt="PromptPay QR Code"> 
+                    <p class="qr-note">Scan this QR code with your Mobile Banking App.</p>
+                </div>
+
+                <div class="bank-details">
+                    <h4>Transfer Details</h4>
+                    <p>Payment System: <strong>PromptPay</strong></p>
+                </div>
+                
+            </div>
+            
+            <button id="confirmPaidBtn" class="book-btn return-btn" style="margin-top: 20px;">I have paid and returned the book</button>
+            <p class="paid-note">After successful payment, click the button above to confirm and clear the reservation.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

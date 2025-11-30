@@ -1,0 +1,407 @@
+/* style.css - Warm Earth Tone Theme (FINAL VERSION with Fine Modal) */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FAF6F0; /* Off-White / Very light Cream */
+    color: #4A4A4A; /* Dark Brown/Grey for text */
+}
+
+header {
+    background-color: #B5A28E; /* Warm Tan/Light Brown */
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    /* Flexbox for button and title positioning */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the h1 title */
+    position: relative; 
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    flex-grow: 1; /* Title takes up space and centers */
+    text-align: center;
+}
+
+/* Home Button on Catalog Page */
+.home-btn {
+    background-color: #A9876E; /* Darker Tan/Brown Button */
+    color: white;
+    text-decoration: none;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+
+    /* Positioning the button to the far left, offset by 20px, and perfectly centered vertically */
+    position: absolute;
+    left: 20px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+}
+
+.home-btn:hover {
+    background-color: #8C6A57; /* Darker on hover */
+}
+
+main {
+    max-width: 1100px; 
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Landing Page Specific Style */
+.landing-container {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+.landing-container h1 {
+    font-size: 4.5em; 
+    color: #8C6A57; 
+    margin-bottom: 10px;
+    letter-spacing: 5px; 
+    font-weight: 300; 
+}
+.landing-container p {
+    font-size: 1.5em;
+    color: #6A6A6A; 
+    margin-bottom: 40px;
+}
+.enter-btn {
+    background-color: #C39F7F; 
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.3em; 
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+.enter-btn:hover {
+    background-color: #A9876E; 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+/* End of Landing Page Style */
+
+
+/* Catalog Styles */
+.library-catalog h2 {
+    color: #8C6A57; 
+    border-bottom: 2px solid #E3D9C9; 
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* NAVIGATION STYLE */
+.category-nav {
+    max-width: 1100px; 
+    margin: 20px auto 30px;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #FFFFFF; 
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.nav-btn {
+    background-color: #F8F4F0; 
+    color: #8C6A57; 
+    border: 1px solid #E3D9C9; 
+    padding: 10px 20px;
+    margin: 0 8px;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-size: 0.95em;
+}
+
+.nav-btn:hover {
+    background-color: #E3D9C9; 
+    color: #6C5547; 
+}
+
+.nav-btn.active {
+    background-color: #C39F7F; 
+    color: white;
+    border-color: #C39F7F;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; 
+    justify-content: center;
+}
+
+.book-card {
+    background-color: white;
+    border: 1px solid #E3D9C9; 
+    border-radius: 8px; 
+    padding: 20px;
+    width: 250px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center; 
+}
+
+.book-card h3 {
+    margin-top: 0;
+    color: #A9876E; 
+    font-size: 1.25em;
+    min-height: 2.6em; 
+    text-align: center; 
+}
+
+.book-card p {
+    margin: 10px 0;
+    margin-top: 5px; 
+    color: #6C6C6C; 
+}
+
+.status {
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 0.9em;
+}
+.status.available {
+    background-color: #DDE5B6; 
+    color: #4C592C;
+}
+
+.status.booked {
+    background-color: #E3D9C9; 
+    color: #9C775A;
+}
+
+/* Style for the Remaining Time Timer */
+.status-timer {
+    font-size: 1em;
+    margin: 15px 0 10px;
+    padding: 8px 15px;
+}
+.status-timer.booked {
+    background-color: #FFCDD2; 
+    color: #C62828;
+    border: 1px solid #C62828;
+}
+
+/* Base style for all action buttons */
+.book-btn {
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 15px; 
+}
+
+/* Reserve Button Style */
+.book-btn.reserve-btn {
+    background-color: #C39F7F; 
+}
+.book-btn.reserve-btn:hover:not(:disabled) {
+    background-color: #A9876E; 
+}
+
+/* Return Button Style */
+.book-btn.return-btn {
+    background-color: #6A6A6A; /* Gray/Neutral tone for return action */
+}
+.book-btn.return-btn:hover:not(:disabled) {
+    background-color: #4A4A4A; 
+}
+
+/* Fine Button Style */
+.book-btn.fine-btn {
+    background-color: #C62828; /* Deep Red for urgent action */
+    box-shadow: 0 4px 8px rgba(198, 40, 40, 0.4);
+}
+.book-btn.fine-btn:hover:not(:disabled) {
+    background-color: #8C1C1C;
+}
+
+.book-btn:disabled {
+    background-color: #D3D3D3; 
+    color: #8C8C8C;
+    cursor: not-allowed;
+}
+
+.booking-info {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #FFFCE3; 
+    border-left: 5px solid #C39F7F; 
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Policy Info Style */
+.policy-info {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #F0EAD6; /* Slightly darker cream for policy box */
+    border-radius: 5px;
+    border: 1px dashed #B5A28E;
+}
+
+.policy-info p {
+    color: #6C5547; /* Darker brown text */
+    font-size: 0.95em;
+    margin: 5px 0;
+}
+
+/* Contact Information Section */
+.contact-info {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #E3D9C9; 
+}
+
+.booking-info h2 {
+    color: #8C6A57;
+    border-bottom: 2px solid #E3D9C9;
+    padding-bottom: 10px;
+}
+.booking-info p {
+    color: #6C6C6C;
+    margin: 0;
+}
+.contact-info p {
+    font-size: 0.9em; 
+    color: #8C6A57; 
+    margin: 5px 0;
+}
+
+/* START: NEW LINK STYLING FOR CONTACT INFO */
+.contact-info p a {
+    color: #8C6A57; /* Darker brown color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+/* 🟢 BINDING VISITED LINKS TO THE SAME COLOR */
+.contact-info p a:visited {
+    color: #8C6A57; 
+}
+
+.contact-info p a:hover {
+    color: #C39F7F; /* Lighter color on hover */
+    text-decoration: underline;
+}
+/* END: NEW LINK STYLING */
+
+
+/* Style for Overdue Timer Background */
+.status-timer.overdue {
+    background-color: #FFCDD2; /* Light Red */
+    color: #C62828; /* Dark Red text */
+    border: 1px solid #C62828;
+    font-weight: bold;
+    animation: pulse 1.5s infinite; /* Optional: Make it blink slightly */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* NEW: Modal Styling for Fine Payment */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 10% from the top and centered */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.payment-details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #FAF6F0; 
+    border-radius: 8px;
+}
+
+.qr-code-container {
+    margin: 15px 0;
+}
+
+#qrCodeImage {
+    width: 100%; 
+    max-width: 200px; /* Max size for the QR code */
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.qr-note {
+    font-size: 0.9em;
+    color: #8C6A57;
+    margin-top: 5px;
+}
+
+.bank-details p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+.paid-note {
+    font-size: 0.8em;
+    color: #6A6A6A;
+    margin-top: 10px;
+}
