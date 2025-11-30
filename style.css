@@ -1,38 +1,34 @@
-/* style.css - Warm Earth Tone Theme (FINAL VERSION with Fine Modal, Responsive Design, Background Image, and Transparent Buttons) */
+/* style.css - FINAL CORRECTED VERSION (FIXED LAYOUT ISOLATION, CENTERING, AND RESPONSIVENESS) */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    /* --- ภาพพื้นหลัง --- */
-    background-image: url('library_background.jpg'); /* ใช้ชื่อไฟล์ที่คุณตั้งไว้ */
-    background-size: cover; /* ทำให้รูปภาพคลุมเต็มพื้นที่ */
-    background-attachment: fixed; /* ทำให้รูปภาพอยู่กับที่เมื่อเลื่อนหน้าจอ */
-    /* ------------------- */
-    background-color: #FAF6F0; /* Off-White / Very light Cream (ใช้เป็น fallback) */
+    background-color: #FAF6F0; /* Off-White / Very light Cream */
     color: #4A4A4A; /* Dark Brown/Grey for text */
 }
 
+/* ----------------------------------------------------------------- */
+/* GLOBAL HEADER STYLES (Applies to all pages) */
+/* ----------------------------------------------------------------- */
 header {
     background-color: #B5A28E; /* Warm Tan/Light Brown */
     color: white;
     padding: 20px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     
-    /* Flexbox for button and title positioning */
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the h1 title */
+    justify-content: center; 
     position: relative; 
 }
 
 header h1 {
     font-size: 2.5em;
     margin: 0;
-    flex-grow: 1; /* Title takes up space and centers */
+    flex-grow: 1; 
     text-align: center;
 }
 
-/* Home Button on Catalog Page */
 .home-btn {
     background-color: #A9876E; /* Darker Tan/Brown Button */
     color: white;
@@ -45,7 +41,6 @@ header h1 {
     font-size: 0.9em;
     transition: background-color 0.3s;
 
-    /* Positioning the button to the far left, offset by 20px, and perfectly centered vertically */
     position: absolute;
     left: 20px; 
     top: 50%; 
@@ -56,41 +51,36 @@ header h1 {
     background-color: #8C6A57; /* Darker on hover */
 }
 
+/* ----------------------------------------------------------------- */
+/* MAIN TAG STYLES - ISOLATION (FIX: Home/Catalog Separation) */
+/* ----------------------------------------------------------------- */
+
+/* Global MAIN (Default Max Width) */
 main {
     max-width: 1100px; 
-    margin: 30px auto;
+    margin: 30px auto; /* Centered in the middle of the screen */
     padding: 0 20px;
-    /* Added display flex to handle two columns (catalog and info) on desktop */
-    display: flex;
-    gap: 30px;
-    align-items: flex-start; /* Aligns items to the top */
-    /* เพิ่มพื้นหลังสีขาวโปร่งแสงเพื่อให้ข้อความอ่านง่ายบนภาพพื้นหลัง */
-    background-color: rgba(255, 255, 255, 0.9); /* White with 90% opacity */
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Specific size for catalog and info sections on desktop */
-.library-catalog {
-    flex: 3; /* Takes up more space */
-    min-width: 65%;
-}
-.booking-info {
-    flex: 1; /* Takes up less space */
-    min-width: 300px;
+/* Catalog Page MAIN (ใช้ class นี้ใน catalog.html) */
+main.catalog-page-main {
+    /* FIX: เพิ่ม padding ด้านล่างและกำหนด Display ให้เป็น Block เพื่อควบคุม Layout ได้ง่ายขึ้น */
+    padding: 0 20px 30px 20px; 
+    display: block; 
 }
 
-/* Landing Page Specific Style */
+/* ----------------------------------------------------------------- */
+/* LANDING PAGE STYLES (Used by index.html - FIXED CENTERING) */
+/* ----------------------------------------------------------------- */
+
 .landing-container {
-    height: 100vh; 
+    height: 90vh; /* ใช้ 90vh แทน 100vh เพื่อไม่ให้ติด Header/Footer */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: center; /* FIX: บังคับให้เนื้อหาอยู่กึ่งกลาง */
     padding: 20px;
-    /* เพิ่มพื้นหลังสีขาวโปร่งแสงสำหรับหน้า Landing Page โดยเฉพาะ */
-    background-color: rgba(255, 255, 255, 0.75); /* White with 75% opacity */
 }
 .landing-container h1 {
     font-size: 4.5em; 
@@ -122,10 +112,11 @@ main {
     transform: translateY(-2px); 
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
-/* End of Landing Page Style */
 
 
-/* Catalog Styles */
+/* ----------------------------------------------------------------- */
+/* CATALOG STYLES */
+/* ----------------------------------------------------------------- */
 .library-catalog h2 {
     color: #8C6A57; 
     border-bottom: 2px solid #E3D9C9; 
@@ -134,7 +125,7 @@ main {
     text-align: center;
 }
 
-/* NAVIGATION STYLE */
+/* NAVIGATION STYLE (FIX: Enable flex-wrap) */
 .category-nav {
     max-width: 1100px; 
     margin: 20px auto 30px;
@@ -143,9 +134,9 @@ main {
     background-color: #FFFFFF; 
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
-    justify-content: center;
+    display: flex; /* FIX: ใช้ Flexbox */
+    justify-content: center; 
+    flex-wrap: wrap; /* FIX: ทำให้ปุ่มขึ้นบรรทัดใหม่ได้ */
 }
 
 .nav-btn {
@@ -153,7 +144,7 @@ main {
     color: #8C6A57; 
     border: 1px solid #E3D9C9; 
     padding: 10px 20px;
-    margin: 5px 8px; /* Adjusted margin for wrapping */
+    margin: 5px 8px; /* FIX: เพิ่ม margin ด้านบน/ล่าง */
     border-radius: 5px; 
     cursor: pointer;
     font-weight: bold;
@@ -179,6 +170,7 @@ main {
     justify-content: center;
 }
 
+/* BOOK CARD (FIX: Uniform Height) */
 .book-card {
     background-color: white;
     border: 1px solid #E3D9C9; 
@@ -187,6 +179,10 @@ main {
     width: 250px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     text-align: center; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between; 
+    min-height: 380px; /* กำหนดความสูงขั้นต่ำเพื่อความสม่ำเสมอ */
 }
 
 .book-card h3 {
@@ -233,57 +229,50 @@ main {
     border: 1px solid #C62828;
 }
 
-/* ------------------------------------------------------------- */
-/* NEW: TRANSPARENT BUTTON STYLES WITH BORDER */
-/* ------------------------------------------------------------- */
-
 /* Base style for all action buttons */
 .book-btn {
-    /* Text color matches border color by default (defined by --button-color below) */
-    color: var(--button-color); 
-    border: 2px solid var(--button-color); /* Add border */
-    background-color: transparent; /* Transparent background */
-    padding: 8px 15px; /* Reduced padding for a lighter look */
+    color: white;
+    border: none;
+    padding: 10px 15px;
     border-radius: 5px; 
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    transition: all 0.3s; /* Transition for all properties */
+    transition: background-color 0.3s;
     width: 100%;
-    margin-top: 15px; 
-}
-
-/* Hover effect for all buttons: fill the background */
-.book-btn:hover:not(:disabled) {
-    background-color: var(--button-color); /* Fill background on hover */
-    color: white; /* Change text to white on hover */
+    margin-top: auto; /* FIX: ให้ปุ่มติดด้านล่างของการ์ดเสมอ */
 }
 
 /* Reserve Button Style */
 .book-btn.reserve-btn {
-    --button-color: #C39F7F; /* Define color variable */
+    background-color: #C39F7F; 
+}
+.book-btn.reserve-btn:hover:not(:disabled) {
+    background-color: #A9876E; 
 }
 
 /* Return Button Style */
 .book-btn.return-btn {
-    --button-color: #6A6A6A; /* Define color variable */
+    background-color: #6A6A6A; 
+}
+.book-btn.return-btn:hover:not(:disabled) {
+    background-color: #4A4A4A; 
 }
 
 /* Fine Button Style */
 .book-btn.fine-btn {
-    --button-color: #C62828; /* Define color variable */
-    box-shadow: none; /* Remove old box shadow for clean transparent look */
+    background-color: #C62828; 
+    box-shadow: 0 4px 8px rgba(198, 40, 40, 0.4);
+}
+.book-btn.fine-btn:hover:not(:disabled) {
+    background-color: #8C1C1C;
 }
 
 .book-btn:disabled {
     background-color: #D3D3D3; 
     color: #8C8C8C;
-    border-color: #D3D3D3; /* Ensure border is also greyed out */
     cursor: not-allowed;
 }
-
-/* ------------------------------------------------------------- */
-
 
 .booking-info {
     margin-top: 40px;
@@ -298,13 +287,13 @@ main {
 .policy-info {
     margin: 20px 0;
     padding: 15px;
-    background-color: #F0EAD6; /* Slightly darker cream for policy box */
+    background-color: #F0EAD6; 
     border-radius: 5px;
     border: 1px dashed #B5A28E;
 }
 
 .policy-info p {
-    color: #6C5547; /* Darker brown text */
+    color: #6C5547; 
     font-size: 0.95em;
     margin: 5px 0;
 }
@@ -331,9 +320,9 @@ main {
     margin: 5px 0;
 }
 
-/* NEW LINK STYLING FOR CONTACT INFO (Keep color on visited links) */
+/* START: NEW LINK STYLING FOR CONTACT INFO */
 .contact-info p a {
-    color: #8C6A57; /* Darker brown color */
+    color: #8C6A57; 
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
@@ -344,15 +333,16 @@ main {
 }
 
 .contact-info p a:hover {
-    color: #C39F7F; /* Lighter color on hover */
+    color: #C39F7F; 
     text-decoration: underline;
 }
+/* END: NEW LINK STYLING */
 
 
 /* Style for Overdue Timer Background */
 .status-timer.overdue {
-    background-color: #FFCDD2; /* Light Red */
-    color: #C62828; /* Dark Red text */
+    background-color: #FFCDD2; 
+    color: #C62828; 
     border: 1px solid #C62828;
     font-weight: bold;
     animation: pulse 1.5s infinite; 
@@ -389,82 +379,108 @@ main {
     text-align: center;
 }
 
-/* ... (Modal content styles remain the same) ... */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.payment-details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #FAF6F0; 
+    border-radius: 8px;
+}
+
+.qr-code-container {
+    margin: 15px 0;
+}
+
+#qrCodeImage {
+    width: 100%; 
+    max-width: 200px; 
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.qr-note {
+    font-size: 0.9em;
+    color: #8C6A57;
+    margin-top: 5px;
+}
+
+.bank-details p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+.paid-note {
+    font-size: 0.8em;
+    color: #6A6A6A;
+    margin-top: 10px;
+}
 
 /* ---------------------------------------------------------------- */
-/* 📱 MEDIA QUERY: RESPONSIVE DESIGN FOR MOBILE PHONES */
+/* 📱 MEDIA QUERY: RESPONSIVE DESIGN FOR MOBILE PHONES (FINAL FIX) */
 /* ---------------------------------------------------------------- */
 
 @media (max-width: 768px) {
-    /* Main Layout Adjustment (Catalog and Info Section) */
-    main {
-        flex-direction: column; /* Stacks the two columns (Catalog and Info) vertically */
-        padding: 0 10px; /* Reduces side padding */
-        margin: 20px auto;
-    }
-    
-    /* Header and Title Adjustment */
+    /* Header Fix */
     header h1 {
-        font-size: 1.8em; /* Smaller title size */
+        font-size: 1.8em; 
     }
-
-    /* Home Button Adjustment for mobile header */
     .home-btn {
-        position: static; /* Allows it to flow naturally */
+        position: static; 
         transform: none;
-        margin: 0 10px 10px 10px; /* Adds space below the button */
+        margin: 0 10px 10px 10px; 
         padding: 6px 10px;
         align-self: flex-start;
     }
-
-    /* Catalog and Info Sections */
-    .library-catalog, .booking-info {
-        min-width: 100%; /* Takes up full screen width */
-        flex: none;
+    
+    /* Landing Page Fix (หน้าแรก) */
+    .landing-container {
+        padding: 10px;
     }
-
-    /* Landing Page Adjustment for Mobile */
     .landing-container h1 {
-        font-size: 3em; /* ลดขนาดชื่อเว็บใหญ่ลงสำหรับมือถือ */
+        font-size: 3em; 
         letter-spacing: 3px;
     }
     .landing-container p {
-        font-size: 1.2em; /* ลดขนาดข้อความต้อนรับ */
-        margin-bottom: 30px;
-    }
-    .enter-btn {
-        font-size: 1.1em; /* ลดขนาดปุ่มลงเล็กน้อย */
-        padding: 12px 30px;
+        font-size: 1.2em;
     }
     
-    /* Navigation Bar (Buttons) Adjustment */
+    /* Catalog Fix */
+    main.catalog-page-main {
+        padding: 0 10px 20px 10px;
+    }
     .category-nav {
-        padding: 10px 5px;
+        padding: 5px;
     }
     .nav-btn {
-        font-size: 0.8em; /* Smaller button text */
+        font-size: 0.8em; 
         padding: 8px 10px;
         margin: 5px 3px;
-        flex-grow: 1; /* Allows buttons to share space better */
-    }
-
-    /* Book Card Adjustment for Mobile View */
-    .book-list {
-        gap: 15px; /* Smaller gap between cards */
     }
     .book-card {
-        width: 90%; /* Makes cards wider to fill the screen better */
+        width: 100%; /* ทำให้การ์ดขยายเต็มความกว้าง */
         max-width: 350px;
-        margin: 0 auto;
+        margin: 10px auto; /* จัดกึ่งกลางการ์ด */
     }
-    .book-card h3 {
-        min-height: auto; /* Removes minimum height constraint on small screens */
+    
+    .booking-info {
+        padding: 15px; /* ลดขนาด System Notes */
     }
-
-    /* Modal Adjustment */
     .modal-content {
-        margin: 5% auto;
+        margin: 20% auto;
         padding: 20px;
-        width: 90%; /* Wider modal on small screens */
     }
 }
