@@ -369,4 +369,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial load: show all books when the page first loads
     handleFilter('All');
+
 });
