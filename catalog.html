@@ -3,84 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E Light berry Hub - Book Catalog</title>
+    <title>E Lightberry Hub - Book Catalog</title>
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
-    <header>
+    <header class="centered-header">
         <a href="index.html" class="home-btn">← Go to Home</a>
-        <h1>📚 E Light berry Hub: Book Catalog</h1>
+        <h1>📚 E Lightberry Hub: Book Catalog</h1>
     </header>
 
-    <nav class="category-nav">
-        <button class="nav-btn" data-view="Reservations">My Reservations</button>
-        <button class="nav-btn active" data-view="All">All Books</button>
-        <button class="nav-btn" data-view="Fiction">Fiction & Fantasy</button>
-        <button class="nav-btn" data-view="Comics">Comics & Manga</button>
-        <button class="nav-btn" data-view="Learning">Learning & Study</button>
-    </nav>
-    <main>
+    <main class="catalog-page-main"> 
+
+        <nav class="category-nav">
+            <button class="nav-btn" data-category="reserved" onclick="filterBooks('reserved')">My Reservations</button> 
+            <button class="nav-btn active" data-category="all" onclick="filterBooks('all')">All Books</button>
+            <button class="nav-btn" data-category="Fiction" onclick="filterBooks('Fiction')">Fiction & Fantasy</button>
+            <button class="nav-btn" data-category="Comics" onclick="filterBooks('Comics')">Comics & Manga</button>
+            <button class="nav-btn" data-category="Learning" onclick="filterBooks('Learning')">Learning & Study</button>
+        </nav>
+        
         <section class="library-catalog">
             <h2 id="catalog-title">All Books</h2>
             <div id="book-list-container" class="book-list">
-            </div>
+                </div>
         </section>
         
         <section class="booking-info">
-            <h2>System Notes</h2>
-            <p>ℹ️ Disclaimer: This system is a prototype. All reservation statuses will reset upon page refresh.</p>
+            <h2>📜 Reservation Policy</h2>
+            <p>ℹ️ Reservation Duration: All books are reserved for 7 days.</p>
+            <p>🚨 Late Fee: A fine of - 10 THB per day - will be applied after the due date.</p>
+            <p>📚 Contact: Please return books on time to keep the library circulating.</p>
             
-            <div class="policy-info">
-                <p>⚠️ Loan Policy: Books are reserved for a maximum of  - 7 days -  (including the day of reservation).</p>
-                <p>🔔 Overdue Fine: Failure to return the book by the due date will result in a penalty fee of  - 5 THB per day -  (starting from the day after the due date).</p>
-            </div>
             <div class="contact-info">
                 <p>🚨 Need help? Contact us!</p>
-                
                 <p>
-                    Line ID (Admin 1): @phonnaphat08 | 
-                    Line ID (Admin 2): @botchina.pj
-                </p>
-                
-                <p>
-                    Instagram (Admin 1): 
+                    📸 Instagram (Admin 1): 
                     <a href="https://www.instagram.com/_phonnaphat.t/" target="_blank">@_phonnaphat.t</a> 
                     | 
-                    Instagram (Admin 2): 
+                    📸 Instagram (Admin 2): 
                     <a href="https://www.instagram.com/dazaro.mctc/" target="_blank">@dazaro.mctc</a>
                 </p>
             </div>
             </section>
     </main>
     
-    <div id="fineModal" class="modal">
+    <div id="fineModal" class="modal" style="display: none;">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>💰 Fine Payment: <span id="modalBookTitle"></span></h2>
-            <p>Total Overdue Fine: <strong id="modalFineAmount" style="color: #C62828;"></strong></p>
-            
-            <div class="payment-details">
-                <h3>Please Scan to Pay (PromptPay)</h3>
-                
-                <div class="qr-code-container">
-                    <img id="qrCodeImage" src="promptpay_qr.png" alt="PromptPay QR Code"> 
-                    <p class="qr-note">Scan this QR code with your Mobile Banking App.</p>
-                </div>
-
-                <div class="bank-details">
-                    <h4>Transfer Details</h4>
-                    <p>Payment System: <strong>PromptPay</strong></p>
-                    <p>Account Name: <strong>Phonnaphat Aunjaipeun</strong></p>
-                    <p>Mobile/Account No: <strong>099-229-1849</strong></p> 
-                </div>
-                
-            </div>
-            
-            <button id="confirmPaidBtn" class="book-btn return-btn" style="margin-top: 20px;">I have paid and returned the book</button>
-            <p class="paid-note">After successful payment, click the button above to confirm and clear the reservation.</p>
+            <span class="close-btn" onclick="closeFineModal()">&times;</span>
+            <h2>Pay Late Fee</h2>
+            <div id="fineDetails"></div>
+            <p class="fine-warning">Please confirm payment details below.</p>
+            <button class="book-btn confirm-fine-btn" onclick="processFinePayment()">Confirm Payment (Return Book)</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
