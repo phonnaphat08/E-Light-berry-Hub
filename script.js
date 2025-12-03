@@ -63,18 +63,6 @@ const globalLibraryBooks = [
     { id: 4, title: "Alice in Wonderland", author: "Lewis Carroll", category: "Fiction", price: 280 },
     { id: 5, title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", category: "Fiction", price: 350 },
     { id: 6, title: "The Hobbit", author: "J.R.R. Tolkien", category: "Fiction", price: 400 },
-    { id: 7, title: "The Lord of the Rings: The Fellowship of the Ring", author: "J.R.R. Tolkien", category: "Fiction", price: 400 },
-    { id: 8, title: "1984", author: "George Orwell", category: "Fiction", price: 320 },
-    { id: 9, title: "Animal Farm", author: "George Orwell", category: "Fiction", price: 270 },
-    { id: 10, title: "Brave New World", author: "Aldous Huxley", category: "Fiction", price: 310 },
-    { id: 11, title: "Dune", author: "Frank Herbert", category: "Fiction", price: 380 },
-    { id: 12, title: "The Great Gatsby", author: "F. Scott Fitzgerald", category: "Fiction", price: 290 },
-    { id: 13, title: "To Kill a Mockingbird", author: "Harper Lee", category: "Fiction", price: 330 },
-    { id: 14, title: "Moby Dick", author: "Herman Melville", category: "Fiction", price: 360 },
-    { id: 15, title: "War and Peace", author: "Leo Tolstoy", category: "Fiction", price: 450 },
-    { id: 16, title: "The Odyssey", author: "Homer", category: "Fiction", price: 300 },
-    { id: 17, title: "One Hundred Years of Solitude", author: "Gabriel García Márquez", category: "Fiction", price: 370 },
-    { id: 18, title: "The Catcher in the Rye", author: "J.D. Salinger", category: "Fiction", price: 310 },
 
     // Comics & Manga
     { id: 3, title: "Sailor Moon Vol. 1", author: "Naoko Takeuchi", category: "Comics", price: 220 },
@@ -82,46 +70,13 @@ const globalLibraryBooks = [
     { id: 20, title: "Watchmen", author: "Alan Moore", category: "Comics", price: 280 },
     { id: 21, title: "Maus", author: "Art Spiegelman", category: "Comics", price: 240 },
     { id: 22, title: "Persepolis", author: "Marjane Satrapi", category: "Comics", price: 230 },
-    { id: 23, title: "V for Vendetta", author: "Alan Moore", category: "Comics", price: 260 },
-    { id: 24, title: "Astro Boy Vol. 1", author: "Osamu Tezuka", category: "Comics", price: 210 },
-    { id: 25, title: "Dragon Ball Vol. 1", author: "Akira Toriyama", category: "Comics", price: 200 },
-    { id: 26, title: "One Piece Vol. 1", author: "Eiichiro Oda", category: "Comics", price: 200 },
-    { id: 27, title: "Naruto Vol. 1", author: "Masashi Kishimoto", category: "Comics", price: 190 },
-    { id: 28, title: "Attack on Titan Vol. 1", author: "Hajime Isayama", category: "Comics", price: 230 },
-    { id: 29, title: "Death Note Vol. 1", author: "Tsugumi Ohba", category: "Comics", price: 220 },
-    { id: 30, title: "Fullmetal Alchemist Vol. 1", author: "Hiromu Arakawa", category: "Comics", price: 210 },
-    { id: 31, title: "My Hero Academia Vol. 1", author: "Kohei Horikoshi", category: "Comics", price: 200 },
-    { id: 32, title: "Tokyo Ghoul Vol. 1", author: "Sui Ishida", category: "Comics", price: 210 },
-    { id: 33, title: "Saga Vol. 1", author: "Brian K. Vaughan", category: "Comics", price: 240 },
-    { id: 34, title: "The Walking Dead Vol. 1", author: "Robert Kirkman", category: "Comics", price: 260 },
-    { id: 35, title: "Batman: The Killing Joke", author: "Alan Moore", category: "Comics", price: 250 },
-
+    
     // Learning & Study Books
     { id: 36, title: "Calculus for Dummies", author: "Mark Zegarelli", category: "Learning", price: 450 },
     { id: 37, title: "The Art of Programming", author: "Donald Knuth", category: "Learning", price: 550 },
     { id: 38, title: "Psychology: The Science of Mind", author: "Michael Passer", category: "Learning", price: 480 },
     { id: 39, title: "A Brief History of Time", author: "Stephen Hawking", category: "Learning", price: 380 },
     { id: 40, title: "Sapiens: A Brief History of Humankind", author: "Yuval Noah Harari", category: "Learning", price: 400 },
-    { id: 41, title: "Cosmos", author: "Carl Sagan", category: "Learning", price: 390 },
-    { id: 42, title: "The Selfish Gene", author: "Richard Dawkins", category: "Learning", price: 420 },
-    { id: 43, title: "Introduction to Algorithms", author: "Thomas H. Cormen", category: "Learning", price: 520 },
-    { id: 44, title: "Database System Concepts", author: "Avi Silberschatz", category: "Learning", price: 500 },
-    { id: 45, title: "Operating System Concepts", author: "Avi Silberschatz", category: "Learning", price: 510 },
-    { id: 46, title: "Computer Networking: A Top-Down Approach", author: "James Kurose", category: "Learning", price: 490 },
-    { id: 47, title: "Thermodynamics: An Engineering Approach", author: "Yunus Cengel", category: "Learning", price: 530 },
-    { id: 48, title: "Organic Chemistry", author: "Paul A. Wade", category: "Learning", price: 480 },
-    { id: 49, title: "Linear Algebra Done Right", author: "Sheldon Axler", category: "Learning", price: 450 },
-    { id: 50, title: "Principles of Economics", author: "N. Gregory Mankiw", category: "Learning", price: 470 },
-    { id: 51, title: "The 7 Habits of Highly Effective People", author: "Stephen Covey", category: "Learning", price: 350 },
-    { id: 52, title: "Rich Dad Poor Dad", author: "Robert Kiyosaki", category: "Learning", price: 360 },
-    { id: 53, title: "The Elements of Style", author: "William Strunk Jr.", category: "Learning", price: 370 },
-    { id: 54, title: "The Practice of Programming", author: "Brian Kernighan", category: "Learning", price: 500 },
-    { id: 55, title: "HTML & CSS: Design and Build Websites", author: "Jon Duckett", category: "Learning", price: 410 },
-    { id: 56, title: "JavaScript: The Good Parts", author: "Douglas Crockford", category: "Learning", price: 430 },
-    { id: 57, title: "The Intelligent Investor", author: "Benjamin Graham", category: "Learning", price: 460 },
-    { id: 58, title: "Astrophysics for People in a Hurry", author: "Neil deGrasse Tyson", category: "Learning", price: 400 },
-    { id: 59, title: "Clean Code", author: "Robert C. Martin", category: "Learning", price: 540 },
-    { id: 60, title: "Introduction to Financial Accounting", author: "Charles T. Horngren", category: "Learning", price: 490 }
 ];
 
 
@@ -384,10 +339,6 @@ if (isCatalogPage) {
                 ...res
             }));
             
-            const overdueBooks = reservedItems.filter(item => isOverdue(item.dueDate));
-            const dueSoonBooks = reservedItems.filter(item => isDueSoon(item.dueDate) && !isOverdue(item.dueDate));
-            const otherReserved = reservedItems.filter(item => !isOverdue(item.dueDate) && !isDueSoon(item.dueDate));
-
             let htmlContent = '';
 
             if (overdueBooks.length > 0) {
