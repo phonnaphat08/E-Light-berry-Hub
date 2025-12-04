@@ -48,8 +48,6 @@ const globalLibraryBooks = [
       imageUrl: getImageUrl(8) },
     { id: 9, title: "Persepolis", author: "Marjane Satrapi", category: "Comics", price: 230, 
       imageUrl: getImageUrl(9) },
-    { id: 15, title: "Sapiens: A Brief History of Humankind", author: "Yuval Noah Harari", category: "Comics", price: 400, 
-      imageUrl: getImageUrl(15) }, 
 
     // Learning & Study Books (4 books)
     { id: 10, title: "Calculus for Dummies", author: "Mark Zegarelli", category: "Learning", price: 450, 
