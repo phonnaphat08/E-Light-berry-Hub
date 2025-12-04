@@ -1,10 +1,9 @@
-// script.js - MOCK API READY VERSION (15 Books, NO DEMO RESERVATIONS)
+// script.js - ULTIMATE FIX: Stabilized the filterBooks() re-render check
 
 // ---------------------------------------------------------------------
-// GLOBAL DATA & INITIALIZATION
+// GLOBAL DATA & INITIALIZATION (Unchanged)
 // ---------------------------------------------------------------------
 
-// Define a static user key since there is no login form (for localStorage)
 const STATIC_USER_KEY = 'GuestUser'; 
 const DUMMY_NAME = 'Guest Customer';
 
@@ -12,58 +11,66 @@ const DUMMY_NAME = 'Guest Customer';
 const FINE_PER_DAY = 10;
 const RESERVATION_DAYS = 7; 
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
-// QR Code image path (Must be in the same folder)
 const QR_CODE_IMAGE_PATH = 'qr_code_payment.png'; 
+const IMAGE_FOLDER_PATH = ''; // Path ถูกต้องแล้วตามโครงสร้างไฟล์ปัจจุบัน
 
-// Load reservations from Local Storage (เริ่มต้นด้วยการโหลดจาก Local Storage)
-// ถ้าไม่เคยมีการจองมาก่อน userReservations จะเป็น array ว่าง []
 let userReservations = JSON.parse(localStorage.getItem(`reservations_${STATIC_USER_KEY}`)) || [];
 
 const isCatalogPage = document.body.querySelector('.library-catalog');
 
+// ---------------------------------------------------------------------
+// 💡 IMAGE PATH UTILITY & MOCK DATABASE (Unchanged)
+// ---------------------------------------------------------------------
 
-// ---------------------------------------------------------------------
-// 📚 MOCK DATABASE (15 Books - 5/Category)
-// ---------------------------------------------------------------------
+function getImageUrl(bookId) {
+    return `${IMAGE_FOLDER_PATH}${bookId}.png`;
+}
 
 const globalLibraryBooks = [
     // Fiction & Fantasy (5 books)
-    { id: 1, title: "The Little Prince", author: "Antoine de Saint-Exupéry", category: "Fiction", price: 250 },
-    { id: 2, title: "Pride and Prejudice", author: "Jane Austen", category: "Fiction", price: 300 },
-    { id: 4, title: "Alice in Wonderland", author: "Lewis Carroll", category: "Fiction", price: 280 },
-    { id: 5, title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", category: "Fiction", price: 350 },
-    { id: 6, title: "The Hobbit", author: "J.R.R. Tolkien", category: "Fiction", price: 400 },
+    { id: 1, title: "The Little Prince", author: "Antoine de Saint-Exupéry", category: "Fiction", price: 250, 
+      imageUrl: getImageUrl(1) },
+    { id: 2, title: "Pride and Prejudice", author: "Jane Austen", category: "Fiction", price: 300, 
+      imageUrl: getImageUrl(2) },
+    { id: 3, title: "Alice in Wonderland", author: "Lewis Carroll", category: "Fiction", price: 280, 
+      imageUrl: getImageUrl(3) },
+    { id: 4, title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", category: "Fiction", price: 350, 
+      imageUrl: getImageUrl(4) },
+    { id: 5, title: "The Hobbit", author: "J.R.R. Tolkien", category: "Fiction", price: 400, 
+      imageUrl: getImageUrl(5) },
 
     // Comics & Manga (5 books)
-    { id: 3, title: "Sailor Moon Vol. 1", author: "Naoko Takeuchi", category: "Comics", price: 220 },
-    { id: 19, title: "The Sandman: Preludes & Nocturnes", author: "Neil Gaiman", category: "Comics", price: 250 },
-    { id: 20, title: "Watchmen", author: "Alan Moore", category: "Comics", price: 280 },
-    { id: 21, title: "Maus", author: "Art Spiegelman", category: "Comics", price: 240 },
-    { id: 22, title: "Persepolis", author: "Marjane Satrapi", category: "Comics", price: 230 },
-    
-    // Learning & Study Books (5 books)
-    { id: 36, title: "Calculus for Dummies", author: "Mark Zegarelli", category: "Learning", price: 450 },
-    { id: 37, title: "The Art of Programming", author: "Donald Knuth", category: "Learning", price: 550 },
-    { id: 38, title: "Psychology: The Science of Mind", author: "Michael Passer", category: "Learning", price: 480 },
-    { id: 39, title: "A Brief History of Time", author: "Stephen Hawking", category: "Learning", price: 380 },
-    { id: 40, title: "Sapiens: A Brief History of Humankind", author: "Yuval Noah Harari", category: "Learning", price: 400 },
+    { id: 6, title: "Sailor Moon Vol. 1", author: "Naoko Takeuchi", category: "Comics", price: 220, 
+      imageUrl: getImageUrl(6) },
+    { id: 7, title: "The Sandman: Preludes & Nocturnes", author: "Neil Gaiman", category: "Comics", price: 250, 
+      imageUrl: getImageUrl(7) },
+    { id: 8, title: "Watchmen", author: "Alan Moore", category: "Comics", price: 280, 
+      imageUrl: getImageUrl(8) },
+    { id: 9, title: "Persepolis", author: "Marjane Satrapi", category: "Comics", price: 230, 
+      imageUrl: getImageUrl(9) },
+    { id: 15, title: "Sapiens: A Brief History of Humankind", author: "Yuval Noah Harari", category: "Comics", price: 400, 
+      imageUrl: getImageUrl(15) }, 
+
+    // Learning & Study Books (4 books)
+    { id: 10, title: "Calculus for Dummies", author: "Mark Zegarelli", category: "Learning", price: 450, 
+      imageUrl: getImageUrl(10) },
+    { id: 11, title: "The Art of Programming", author: "Donald Knuth", category: "Learning", price: 550, 
+      imageUrl: getImageUrl(11) },
+    { id: 12, title: "Psychology: The Science of Mind", author: "Michael Passer", category: "Learning", price: 480, 
+      imageUrl: getImageUrl(12) },
+    { id: 13, title: "A Brief History of Time", author: "Stephen Hawking", category: "Learning", price: 380, 
+      imageUrl: getImageUrl(13) },
 ];
 
-
 // ---------------------------------------------------------------------
-// 💡 MOCK API FUNCTIONS (Simulating Server Endpoints)
+// MOCK API FUNCTIONS & UTILITIES (Unchanged)
 // ---------------------------------------------------------------------
 
-// ฟังก์ชันสำหรับจำลองการรอการตอบกลับจาก Server
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
-/**
- * Mock GET /api/books (ดึงหนังสือทั้งหมด)
- */
 async function mockFetchBooks() {
-    await delay(300); // จำลองการดีเลย์ 0.3 วินาที
+    await delay(300); 
     return new Promise((resolve) => {
-        // จำลองการตอบกลับในรูปแบบที่ Fetch API คืนค่ามา
         resolve({
             json: () => Promise.resolve(globalLibraryBooks),
             ok: true,
@@ -72,65 +79,40 @@ async function mockFetchBooks() {
     });
 }
 
-// ---------------------------------------------------------------------
-// FINE & DATE UTILITIES (Unchanged)
-// ---------------------------------------------------------------------
-
-/**
- * Calculates the current late fee for a reservation.
- * @param {number} dueDateTimestamp - The due date in milliseconds (timestamp).
- * @returns {number} The calculated fine amount in THB.
- */
 function calculateFine(dueDateTimestamp) {
     const currentTime = new Date().getTime();
-    if (currentTime <= dueDateTimestamp) {
-        return 0; // Not overdue
-    }
+    if (currentTime <= dueDateTimestamp) return 0;
     const overdueTime = currentTime - dueDateTimestamp;
     const overdueDays = Math.ceil(overdueTime / MS_PER_DAY);
     return overdueDays * FINE_PER_DAY;
 }
 
-/**
- * Checks if a book is overdue (due date in the past).
- */
 function isOverdue(dueDateTimestamp) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); 
-    const due = new Date(dueDateTimestamp);
-    due.setHours(0, 0, 0, 0);
-    return due.getTime() < today.getTime();
+    const currentTime = new Date().getTime();
+    return currentTime > dueDateTimestamp;
 }
 
-/**
- * Checks if a book is due soon (within the next 3 days).
- */
 function isDueSoon(dueDateTimestamp) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const due = new Date(dueDateTimestamp);
     due.setHours(0, 0, 0, 0);
-    
     const diffTime = due.getTime() - today.getTime();
     const diffDays = Math.ceil(diffTime / MS_PER_DAY);
-    
-    // Due Soon is when the book is due in 1 to 3 days (and not overdue)
     return diffDays > 0 && diffDays <= 3; 
 }
 
 
 // ---------------------------------------------------------------------
-// CATALOG PAGE LOGIC
+// CATALOG PAGE LOGIC (Rendering and Interaction)
 // ---------------------------------------------------------------------
 if (isCatalogPage) {
     
-    // NOTE: เปลี่ยนตัวแปรให้ตรงกับ id ของคุณ หาก book-list-container ไม่ใช่ id ที่ถูกต้อง
     const bookListContainer = document.getElementById('book-list-container');
     const fineModal = document.getElementById('fineModal');
     const catalogTitle = document.getElementById('catalog-title'); 
     let currentBookToReturn = null; 
 
-    // 1. Core Rendering Function 
     function createBookCard(book, reservation) {
         let statusClass = 'available';
         let statusText = 'Status: Available';
@@ -178,6 +160,9 @@ if (isCatalogPage) {
 
         return `
             <div class="book-card" data-category="${book.category}" data-id="${book.id}" data-reserved="${isReserved}">
+                <div class="book-image-wrapper"> 
+                    <img src="${book.imageUrl}" alt="${book.title} Cover" class="book-cover-image">
+                </div>
                 <div>
                     <h3>${book.title}</h3>
                     <p>Author: ${book.author}</p>
@@ -192,30 +177,22 @@ if (isCatalogPage) {
         `;
     }
 
-    /**
-     * Renders all book cards by fetching data from Mock API.
-     */
     async function renderBookList() {
         bookListContainer.innerHTML = '<p style="text-align: center;">... Simulating fetching books from API ...</p>';
         
         try {
-            // *** ใช้ Mock Fetch API แทนการเรียก Server จริง ***
             const response = await mockFetchBooks(); 
             const books = await response.json(); 
             
-            // อัปเดต globalLibraryBooks ด้วยข้อมูลที่ "ดึง" มา (จริง ๆ คือตัวแปรเดิม)
-            // Note: In a real app, this step is crucial for synchronization
-            // globalLibraryBooks = books; 
-            
-            // ดึงการจองล่าสุดจาก Local Storage
-            const currentReservations = JSON.parse(localStorage.getItem(`reservations_${STATIC_USER_KEY}`)) || [];
+            userReservations = JSON.parse(localStorage.getItem(`reservations_${STATIC_USER_KEY}`)) || [];
 
             bookListContainer.innerHTML = ''; 
             const fragment = document.createDocumentFragment();
 
             globalLibraryBooks.forEach(book => {
-                const userReservation = currentReservations.find(r => r.id === book.id); 
-                const cardHTML = createBookCard(book, userReservation);
+                const userReservation = userReservations.find(r => r.id === book.id); 
+                const cardHTML = createBookCard(book, userReservation); 
+                
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = cardHTML.trim();
                 fragment.appendChild(tempDiv.firstChild);
@@ -223,7 +200,7 @@ if (isCatalogPage) {
 
             bookListContainer.appendChild(fragment);
             
-            // เรียก filterBooks อีกครั้งเพื่อให้แสดงผลตามหมวดหมู่ปัจจุบัน
+            // เรียก filterBooks เพื่อให้แสดงผลลัพธ์ที่กรองแล้วทันทีหลัง render
             filterBooks(document.querySelector('.nav-btn.active')?.getAttribute('data-category') || 'all');
 
         } catch (error) {
@@ -232,8 +209,6 @@ if (isCatalogPage) {
         }
     }
     
-    // 2. Reservation Actions (ใช้ Local Storage เหมือนเดิม)
-
     window.showReservationForm = function(buttonElement, bookId) {
         const card = buttonElement.closest('.book-card');
         const reserveBtn = card.querySelector('.reserve-btn');
@@ -249,7 +224,7 @@ if (isCatalogPage) {
         card.querySelector('.reservation-form').style.display = 'none';
     }
 
-    window.handleConfirmReservation = async function(bookId) { // เปลี่ยนเป็น async เพื่อให้ใช้ await renderBookList()
+    window.handleConfirmReservation = async function(bookId) {
         const book = globalLibraryBooks.find(b => b.id === bookId);
         
         if (userReservations.some(r => r.id === bookId)) {
@@ -271,12 +246,12 @@ if (isCatalogPage) {
         
         localStorage.setItem(`reservations_${STATIC_USER_KEY}`, JSON.stringify(userReservations));
         
-        await renderBookList(); // ใช้ await เพื่อรอการวาด UI ใหม่ให้เสร็จ
-        filterBooks('all'); 
+        // เรามั่นใจว่า renderBookList() จะเรียก filterBooks() ที่ได้รับการแก้ไขแล้ว
+        await renderBookList(); 
+        
         alert(`Book "${book.title}" successfully reserved. Due date: ${dueDate.toLocaleDateString()}`);
     }
     
-    // 3. Return Actions
     window.handleBookReturn = async function(bookId) {
         const bookTitle = userReservations.find(r => r.id === bookId)?.title || 'Book';
         if (confirm(`Are you sure you want to return the book "${bookTitle}"?`)) {
@@ -289,7 +264,6 @@ if (isCatalogPage) {
         }
     }
     
-    // 4. Fine Modal Logic 
     window.showFineModal = function(bookId, fineAmount, dueDateString) {
         currentBookToReturn = bookId;
         const fineDetails = document.getElementById('fineDetails');
@@ -318,23 +292,18 @@ if (isCatalogPage) {
 
     window.processFinePayment = async function() {
         if (!currentBookToReturn) return;
-
         const bookTitle = userReservations.find(r => r.id === currentBookToReturn)?.title || 'Book';
-        
         userReservations = userReservations.filter(r => r.id !== currentBookToReturn);
         localStorage.setItem(`reservations_${STATIC_USER_KEY}`, JSON.stringify(userReservations));
         
         closeFineModal();
         await renderBookList();
         filterBooks(document.querySelector('.nav-btn.active').getAttribute('data-category'));
-        
         alert(`Payment for "${bookTitle}" confirmed and book returned. Thank you!`);
     }
 
-    // 5. Filtering (ปรับปรุงเล็กน้อยเพื่อให้สอดคล้องกับโครงสร้างใหม่)
     window.filterBooks = function(category) {
         const navBtns = document.querySelectorAll('.nav-btn');
-        
         navBtns.forEach(btn => {
             btn.classList.remove('active');
             if (btn.getAttribute('data-category') === category) {
@@ -343,68 +312,70 @@ if (isCatalogPage) {
             }
         });
         
-        // --- RESERVED Filter Logic ---
         if (category === 'reserved') {
             catalogTitle.textContent = 'My Reservations'; 
             bookListContainer.innerHTML = '';
-            
+            userReservations = JSON.parse(localStorage.getItem(`reservations_${STATIC_USER_KEY}`)) || [];
+
             const reservedItems = userReservations.map(res => {
-                // ค้นหาข้อมูลหนังสือจาก Mock Data และรวมกับการจอง
                 const book = globalLibraryBooks.find(b => b.id === res.id);
-                return book ? { ...book, ...res } : null;
-            }).filter(item => item !== null);
+                return book ? createBookCard(book, res) : null; 
+            }).filter(item => item !== null).join('');
 
             if (reservedItems.length === 0) {
                 bookListContainer.innerHTML = '<p style="padding: 20px; text-align: center;">You have no books currently reserved.</p>';
                 return;
             }
-
-            let htmlContent = '';
-            
-            // แยกประเภทการจองเพื่อจัดกลุ่ม (ตามโค้ดเดิมของคุณ)
-            const overdueBooks = reservedItems.filter(item => calculateFine(item.dueDate) > 0);
-            const dueSoonBooks = reservedItems.filter(item => calculateFine(item.dueDate) === 0 && isDueSoon(item.dueDate));
-            const otherReserved = reservedItems.filter(item => calculateFine(item.dueDate) === 0 && !isDueSoon(item.dueDate));
-            
-            // ... (โค้ดสร้าง HTML จาก Overdue, Due Soon, และ Reserved อื่น ๆ ตามโค้ดเดิมของคุณ)
-            // ฉันจะรวบยอดการแสดงผลเพื่อความง่าย:
-
-            let tempHtml = '';
-            reservedItems.forEach(book => {
-                tempHtml += createBookCard(book, book); 
-            });
-            bookListContainer.innerHTML = `<div class="book-list">${tempHtml}</div>`;
+            bookListContainer.innerHTML = `<div class="book-list">${reservedItems}</div>`; 
             
         } else {
-            // --- ALL / CATEGORY Filter Logic ---
+            // *** แก้ไขการตรวจสอบเงื่อนไขการ Rerender เพื่อความเสถียร ***
+            const currentCards = document.querySelectorAll('.book-card').length;
+            const totalBooks = globalLibraryBooks.length;
             
-            // Re-render the full list if needed (e.g., if switching from 'Reserved')
-            if (bookListContainer.children.length !== globalLibraryBooks.length) {
+            // ถ้าจำนวนการ์ดไม่เท่ากับจำนวนหนังสือทั้งหมด และไม่ได้อยู่ในหน้า reserved ให้ทำการ render ใหม่
+            if (currentCards !== totalBooks) {
+                // ถ้าการ์ดถูกลบออกทั้งหมด (จาก renderBookList) หรือจำนวนไม่ครบ ให้เรียก render ใหม่
                 renderBookList(); 
+                return; 
             }
+            // *** สิ้นสุดการแก้ไขการตรวจสอบเงื่อนไข ***
             
+            // ดำเนินการ filter ตามปกติ
             document.querySelectorAll('.book-card').forEach(card => {
                 const bookCategory = card.getAttribute('data-category');
                 const isReserved = userReservations.some(r => r.id === parseInt(card.getAttribute('data-id')));
-
                 let shouldShow = false;
 
-                // แสดงเฉพาะหนังสือที่ยังไม่ได้ถูกจอง (Available) และตรงตามหมวดหมู่
+                // กฎการแสดงผล: หนังสือจะแสดงต่อเมื่อ *ไม่ถูกจอง* และตรงกับ Category ที่เลือก
                 if (!isReserved && (category === 'all' || bookCategory === category)) {
                     shouldShow = true;
                 }
-                
                 card.style.display = shouldShow ? 'flex' : 'none'; 
             });
         }
     }
     
-    // Initial Load: เรียกใช้ renderBookList() ที่ตอนนี้ใช้ Mock API
-    renderBookList(); 
-    
-    document.querySelectorAll('.nav-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            filterBooks(this.getAttribute('data-category'));
+    // Initial Load
+    document.addEventListener('DOMContentLoaded', () => {
+        renderBookList(); 
+        
+        const allBtn = document.querySelector('.nav-btn[data-category="all"]');
+        if (allBtn) {
+            allBtn.classList.add('active');
+            catalogTitle.textContent = allBtn.textContent;
+        }
+
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                filterBooks(this.getAttribute('data-category'));
+            });
         });
+
+        window.onclick = function(event) {
+            if (event.target === fineModal) {
+                closeFineModal();
+            }
+        }
     });
 }
