@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - E Lightberry Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Welcome</h1>
+            <p>Please enter your nickname to access the library.</p>
+            <input type="text" id="nicknameInput" placeholder="Your nickname..." maxlength="15">
+            <button id="loginButton" class="enter-btn">Enter Library</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function() {
+            const name = document.getElementById('nicknameInput').value.trim();
+            if (name) {
+                // Save nickname to localStorage
+                localStorage.setItem('userNickname', name);
+                // Redirect to main page
+                window.location.href = 'index.html'; 
+            } else {
+                alert('Please enter your nickname! 😊');
+            }
+        });
+
+        // Enable Enter key to login
+        document.getElementById('nicknameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('loginButton').click();
+            }
+        });
+    </script>
+</body>
+</html>
