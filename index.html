@@ -5,17 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E Lightberry Hub</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        if (!localStorage.getItem('userNickname')) { window.location.href = 'login.html'; }
+    </script>
 </head>
 <body>
     <header class="centered-header">
-        <h1>&#x1F4DA; E Lightberry Hub Library</h1> </header>
+        <h1>📚 E Lightberry Hub Library</h1>
+    </header>
 
     <main class="landing-container">
         <h1>Welcome to the E Lightberry Hub Digital Catalog</h1>
-        <p>Your portal to a curated collection of physical books, comics, and study materials. Start your reading journey now.</p>
-        <a href="catalog.html" class="enter-btn">Browse Catalog</a>
+        <p id="welcomeUser"></p>
+        <p>Your portal to a curated collection of physical books, comics, and study materials.</p>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <a href="catalog.html" class="enter-btn">Browse Catalog</a>
+            <button onclick="logout()" class="nav-btn" style="background:#ddd; border:none; padding:10px; border-radius:5px; cursor:pointer;">Change Nickname</button>
+        </div>
     </main>
 
+    <script>
+        const name = localStorage.getItem('userNickname');
+        if (name) { document.getElementById('welcomeUser').innerText = "Hello, " + name + "! 👋"; }
+        function logout() { localStorage.removeItem('userNickname'); window.location.href = 'login.html'; }
+    </script>
 </body>
 </html>
-
