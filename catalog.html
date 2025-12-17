@@ -16,7 +16,7 @@
     <main class="catalog-page-main"> 
 
         <nav class="category-nav">
-            <button class="nav-btn" data-category="reserved" onclick="filterBooks('reserved')">My Reservations</button> 
+            <button class="nav-btn" data-category="reserved" onclick="filterBooks('reserved')">My Purchases</button> 
             <button class="nav-btn active" data-category="all" onclick="filterBooks('all')">All Books</button>
             <button class="nav-btn" data-category="Fiction" onclick="filterBooks('Fiction')">Fiction & Fantasy</button>
             <button class="nav-btn" data-category="Comics" onclick="filterBooks('Comics')">Comics & Manga</button>
@@ -30,10 +30,10 @@
         </section>
         
         <section class="booking-info">
-            <h2>📜 Reservation Policy</h2>
-            <p>ℹ️ Reservation Duration: All books are reserved for 7 days.</p>
-            <p>🚨 Late Fee: A fine of - 10 THB per day - will be applied after the due date.</p>
-            <p>📚 Contact: Please return books on time to keep the library circulating.</p>
+            <h2>📜 Purchase Policy</h2>
+            <p>ℹ️ Ownership: Once purchased, the digital copy belongs to your account.</p>
+            <p>🚨 Refund: Orders can be cancelled for a full refund using the "Cancel Order" button.</p>
+            <p>📚 Support: If you encounter issues with your purchase, please contact our admins.</p>
             
             <div class="contact-info">
                 <p>🚨 Need help? Contact us!</p>
@@ -45,21 +45,21 @@
                     <a href="https://www.instagram.com/dazaro.mctc/" target="_blank">@dazaro.mctc</a>
                 </p>
             </div>
-            </section>
+        </section>
     </main>
     
     <div id="paymentModal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closePaymentModal()">&times;</span>
-        <h2 style="color: #8C6A57;">Checkout</h2>
-        <div id="paymentDetails">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+            <h2 style="color: #8C6A57;">Checkout</h2>
+            <div id="paymentDetails">
+                </div>
+            <div style="margin-top: 20px;">
+                <button class="book-btn buy-now-btn" onclick="processPurchase()">Confirm Payment</button>
+                <button class="book-btn" style="background:#ccc;" onclick="closePaymentModal()">Cancel</button>
             </div>
-        <div style="margin-top: 20px;">
-            <button class="book-btn buy-now-btn" onclick="processPurchase()">Confirm Payment</button>
-            <button class="book-btn" style="background:#ccc;" onclick="closePaymentModal()">Cancel</button>
         </div>
     </div>
-</div>
 
     <script src="script.js"></script>
 </body>
