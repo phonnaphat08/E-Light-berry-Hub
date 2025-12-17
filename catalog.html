@@ -48,15 +48,18 @@
             </section>
     </main>
     
-    <div id="fineModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeFineModal()">&times;</span>
-            <h2>Pay Late Fee</h2>
-            <div id="fineDetails"></div>
-            <p class="fine-warning">Please confirm payment details below.</p>
-            <button class="book-btn confirm-fine-btn" onclick="processFinePayment()">Confirm Payment (Return Book)</button>
+    <div id="paymentModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closePaymentModal()">&times;</span>
+        <h2 style="color: #8C6A57;">Checkout</h2>
+        <div id="paymentDetails">
+            </div>
+        <div style="margin-top: 20px;">
+            <button class="book-btn buy-now-btn" onclick="processPurchase()">Confirm Payment</button>
+            <button class="book-btn" style="background:#ccc;" onclick="closePaymentModal()">Cancel</button>
         </div>
     </div>
+</div>
 
     <script src="script.js"></script>
 </body>
