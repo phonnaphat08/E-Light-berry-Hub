@@ -432,3 +432,177 @@ header {
         max-width: 180px;
     }
 }
+/* --- Login Page Styles --- */
+.login-body {
+    display: flex; /* จัดตำแหน่งกึ่งกลาง */
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh; 
+    background-color: #f4f4f9; /* สีพื้นหลัง */
+    margin: 0;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 20px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* สำคัญ: ป้องกันช่องพิมพ์ล้นขอบ */
+}
+/* E Lightberry Hub Library Style - FINAL ENGLISH VERSION */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0; background-color: #f4f4f9; color: #333; line-height: 1.6;
+}
+
+header {
+    background-color: #8C6A57; color: white; padding: 20px 15px; 
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.book-list {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px; padding: 15px;
+}
+
+.book-card {
+    background-color: white; border: 1px solid #e0e0e0; border-radius: 10px;
+    padding: 20px; display: flex; flex-direction: column; align-items: center;
+    text-align: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); transition: 0.2s;
+}
+
+.book-image-wrapper { width: 100%; max-width: 120px; height: 180px; margin-bottom: 10px; border: 1px solid #ccc; }
+.book-cover-image { width: 100%; height: 100%; object-fit: cover; }
+
+.description-text { font-size: 0.85em; color: #666; margin: 10px 0; min-height: 45px; }
+
+/* LAYOUT FIX: Price and Stock on separate lines */
+.book-data-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.book-price { color: #28a745; font-size: 1.1em; }
+.book-stock { color: #8C6A57; font-size: 0.9em; }
+
+.status { padding: 4px 8px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; font-size: 0.85em; width: 100%; box-sizing: border-box; }
+.status.available { background-color: #d4edda; color: #155724; }
+.status.reserved { background-color: #fff3cd; color: #856404; }
+
+.card-action-container { display: flex; gap: 8px; width: 100%; }
+.book-btn { flex: 1; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+
+.reserve-btn { background-color: #8C6A57; color: white; }
+.buy-now-btn { background-color: #f5b041; color: white; }
+.return-btn { background-color: #4A90E2; color: white; }
+
+/* Login Page Styling */
+.login-body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #8C6A57; }
+.login-box { background: white; padding: 40px; border-radius: 15px; text-align: center; width: 100%; max-width: 400px; }
+.login-box input { width: 100%; padding: 12px; margin: 20px 0; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+/* LAYOUT FIX: Price and Stock on separate lines */
+.book-data-column {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.book-price { 
+    color: #28a745; /* สีเขียวสำหรับราคาเงิน */
+    font-size: 1.2em; 
+}
+
+.book-stock { 
+    color: #8C6A57; 
+    font-size: 0.9em; 
+}
+
+/* ปุ่ม Buy Now ให้มีขนาดเต็มความกว้าง */
+.buy-now-btn {
+    background-color: #f5b041; 
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buy-now-btn:hover {
+    background-color: #e69d30;
+    transform: scale(1.02);
+}
+
+.status.reserved {
+    background-color: #d1ecf1;
+    color: #0c5460; /* สีฟ้าแสดงว่าเป็นของที่เราซื้อแล้ว */
+}
+/* Styling for Payment column */
+.book-data-column {
+    display: flex; flex-direction: column; gap: 4px;
+    margin-bottom: 12px; font-weight: bold; width: 100%;
+}
+.book-price { color: #28a745; font-size: 1.2em; }
+.book-stock { color: #8C6A57; font-size: 0.9em; }
+
+/* Buy Now Button */
+.buy-now-btn {
+    background-color: #f5b041; color: white; width: 100%;
+    padding: 12px; border: none; border-radius: 8px;
+    font-weight: bold; font-size: 1em; cursor: pointer; transition: 0.3s;
+}
+.buy-now-btn:hover { background-color: #e69d30; transform: scale(1.02); }
+
+/* QR Code Modal Customization */
+.modal-content img {
+    display: block;
+    margin: 20px auto;
+}
+/* ปุ่มยกเลิกการซื้อ (Cancel Order Button) */
+.cancel-purchase-btn {
+    background-color: #e74c3c; /* สีแดงสำหรับแจ้งเตือนการยกเลิก */
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cancel-purchase-btn:hover {
+    background-color: #c0392b;
+    transform: scale(1.02);
+}
+
+/* ปรับปรุง CSS ของ Modal เล็กน้อย */
+.modal-content {
+    text-align: center;
+}
