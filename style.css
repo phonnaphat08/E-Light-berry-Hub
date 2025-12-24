@@ -606,3 +606,123 @@ header {
 .modal-content {
     text-align: center;
 }
+/* E Lightberry Hub - FULL STYLING */
+body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f9; }
+header { background-color: #8C6A57; color: white; padding: 20px; text-align: center; }
+
+/* Promotion Banner */
+.promo-alert { background: #f5b041; color: white; text-align: center; padding: 10px; font-weight: bold; }
+
+.category-nav { display: flex; justify-content: center; gap: 10px; padding: 20px; flex-wrap: wrap; }
+.nav-btn { padding: 8px 15px; border-radius: 20px; border: 1px solid #ddd; cursor: pointer; background: white; }
+.nav-btn.active { background: #8C6A57; color: white; }
+
+.book-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 20px; }
+.book-card { background: white; padding: 20px; border-radius: 10px; text-align: center; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+/* Popular Badge */
+.popular-badge { position: absolute; top: 10px; left: 10px; background: #e74c3c; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.7em; font-weight: bold; }
+
+.book-image-wrapper { width: 100%; height: 180px; margin-bottom: 10px; }
+.book-cover-image { height: 100%; object-fit: cover; }
+.description-text { font-size: 0.85em; color: #666; min-height: 45px; }
+
+/* Price and Stock on Separate Lines */
+.book-data-column { display: flex; flex-direction: column; gap: 5px; margin: 10px 0; font-weight: bold; }
+.book-price { color: #28a745; font-size: 1.1em; }
+.book-stock { color: #8C6A57; font-size: 0.9em; }
+
+.status { padding: 5px; border-radius: 5px; font-size: 0.8em; font-weight: bold; margin-bottom: 10px; }
+.status.available { background: #d4edda; color: #155724; }
+.status.reserved { background: #d1ecf1; color: #0c5460; }
+
+.buy-now-btn { background: #f5b041; color: white; width: 100%; padding: 10px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+.cancel-purchase-btn { background: #e74c3c; color: white; width: 100%; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+
+/* Modal */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; }
+.modal-content { background: white; width: 90%; max-width: 400px; margin: 50px auto; padding: 20px; border-radius: 10px; text-align: center; }
+/* --- 🧾 Cute Receipt Style (เพิ่มแค่อันนี้) --- */
+.receipt-box {
+    background: #fff0f5; /* สีชมพูจางๆ น่ารัก */
+    padding: 30px 20px;
+    border-radius: 10px;
+    position: relative;
+    font-family: 'Courier New', monospace; /* ฟอนต์เหมือนพิมพ์ดีด */
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4); /* เงาสีชมพูฟุ้งๆ */
+    border: 2px dashed #ffb7b2; /* เส้นประสีพีชรอบใบเสร็จ */
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.receipt-box::before {
+    content: "♥ THANK YOU ♥";
+    display: block;
+    font-weight: bold;
+    color: #ff6b6b;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+.receipt-box hr {
+    border: 0;
+    border-top: 2px dotted #ffb7b2;
+    margin: 15px 0;
+}
+
+.receipt-box strong {
+    color: #555;
+    font-size: 1.1em;
+}
+/* E Lightberry Hub - CUTE RECEIPT STYLE */
+body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f4f9; color: #333; }
+header { background-color: #8C6A57; color: white; padding: 20px; text-align: center; }
+
+/* Navigation */
+.category-nav { display: flex; justify-content: center; gap: 10px; padding: 20px; flex-wrap: wrap; }
+.nav-btn { padding: 8px 15px; border-radius: 20px; border: 1px solid #ddd; background: white; cursor: pointer; transition: 0.3s; }
+.nav-btn.active { background: #8C6A57; color: white; border-color: #8C6A57; }
+
+/* Book Grid */
+.book-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+.book-card { background: white; padding: 15px; border-radius: 12px; text-align: center; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+/* Elements */
+.popular-badge { position: absolute; top: 10px; left: 10px; background: #e74c3c; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.7em; font-weight: bold; }
+.book-image-wrapper { height: 180px; margin-bottom: 10px; }
+.book-cover-image { height: 100%; object-fit: contain; }
+.description-text { font-size: 0.8em; color: #666; min-height: 40px; margin-bottom: 5px; }
+
+/* Price & Stock */
+.book-data-column { margin: 10px 0; font-weight: bold; }
+.book-price { color: #28a745; font-size: 1.2em; margin-bottom: 3px; }
+.book-stock { color: #8C6A57; font-size: 0.9em; }
+
+/* Buttons */
+.book-btn { width: 100%; padding: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 5px; }
+.buy-now-btn { background: #f5b041; color: white; }
+.cancel-purchase-btn { background: #e74c3c; color: white; }
+
+/* Modal */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; display: none; align-items: center; justify-content: center; }
+.modal-content { background: white; width: 90%; max-width: 400px; padding: 25px; border-radius: 15px; text-align: center; position: relative; }
+.close-btn { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; }
+
+/* --- 🧾 CUTE RECEIPT STYLE --- */
+.receipt-box {
+    background: #fff0f5; /* สีชมพูจางๆ */
+    padding: 30px 20px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace; /* ฟอนต์พิมพ์ดีด */
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+    border: 2px dashed #ffb7b2; /* เส้นประสีพีช */
+}
+.receipt-box::before {
+    content: "♥ THANK YOU ♥";
+    display: block; font-weight: bold; color: #ff6b6b; margin-bottom: 10px; font-size: 1.2em; letter-spacing: 2px;
+}
+.receipt-box hr { border: 0; border-top: 2px dotted #ffb7b2; margin: 15px 0; }
+.receipt-box strong { color: #555; }
