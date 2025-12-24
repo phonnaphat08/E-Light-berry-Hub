@@ -2,25 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E Lightberry Hub - Book Catalog</title>
+    <title>E Lightberry Hub Catalog</title>
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
+    <header><h1>📚 E Lightberry Hub Catalog</h1></header>
 
-    <header class="centered-header">
-        <a href="index.html" class="home-btn">← Go to Home</a>
-        <h1>📚 E Lightberry Hub: Book Catalog</h1>
-    </header>
-
-    <main class="catalog-page-main"> 
-
+    <main>
         <nav class="category-nav">
-            <button class="nav-btn" data-category="reserved" onclick="filterBooks('reserved')">My Purchases</button> 
+            <button class="nav-btn" data-category="popular" onclick="filterBooks('popular')">🔥 Popular</button> 
             <button class="nav-btn active" data-category="all" onclick="filterBooks('all')">All Books</button>
-            <button class="nav-btn" data-category="Fiction" onclick="filterBooks('Fiction')">Fiction & Fantasy</button>
-            <button class="nav-btn" data-category="Comics" onclick="filterBooks('Comics')">Comics & Manga</button>
-            <button class="nav-btn" data-category="Learning" onclick="filterBooks('Learning')">Learning & Study</button>
+            <button class="nav-btn" data-category="reserved" onclick="filterBooks('reserved')">My Purchases</button> 
+            <button class="nav-btn" data-category="Fiction" onclick="filterBooks('Fiction')">Fiction</button>
+            <button class="nav-btn" data-category="Comics" onclick="filterBooks('Comics')">Comics</button>
+            <button class="nav-btn" data-category="Learning" onclick="filterBooks('Learning')">Learning</button>
         </nav>
         
         <section class="library-catalog">
@@ -48,19 +43,17 @@
         </section>
     </main>
     
-    <div id="paymentModal" class="modal" style="display: none;">
+    <div id="book-list-container" class="book-list"></div>
+    </main>
+    
+    <div id="paymentModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closePaymentModal()">&times;</span>
-            <h2 style="color: #8C6A57;">Checkout</h2>
-            <div id="paymentDetails">
-                </div>
-            <div style="margin-top: 20px;">
-                <button class="book-btn buy-now-btn" onclick="processPurchase()">Confirm Payment</button>
-                <button class="book-btn" style="background:#ccc;" onclick="closePaymentModal()">Cancel</button>
-            </div>
+            <h2 id="modalTitle" style="color: #8C6A57;">Checkout</h2>
+            <div id="paymentDetails"></div>
+            <button id="confirmPayBtn" class="book-btn buy-now-btn" onclick="processPurchase()" style="margin-top: 15px;">Confirm Payment</button>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-</html>
